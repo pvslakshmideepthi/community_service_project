@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swarna Swayam Krushi Society</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-hover {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .chat-bubble {
+            max-width: 70%;
+            word-wrap: break-word;
+        }
+        .notification-badge {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .impact-counter {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #4f46e5;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-seedling text-green-600 text-2xl mr-3"></i>
+                    <span class="text-xl font-bold text-gray-800">Swarna Swayam Krushi Society</span>
+                    
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <button onclick="showSection('home')" class="nav-btn text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md">Home</button>
+                    <button onclick="showSection('about')" class="nav-btn text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md">About</button>
+                    <button onclick="showSection('gallery')" class="nav-btn text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md">Gallery</button>
+                    <button onclick="showSection('donors')" class="nav-btn text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md">Donors</button>
+                    <button onclick="showSection('events')" class="nav-btn text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md">Events</button>
+                    <button onclick="showSection('contact')" class="nav-btn text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md">Contact</button>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <button onclick="showDonateModal()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                        <i class="fas fa-heart mr-2"></i>Donate Now
+                    </button>
+                    <button onclick="showLoginModal()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-sign-in-alt mr-2"></i>Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="pt-16">
+        <!-- Home Section -->
+        <section id="home" class="section-content">
+            <!-- Hero Section -->
+            <div class="gradient-bg text-white py-20">
+                <div class="max-w-7xl mx-auto px-4 text-center">
+                    <h1 class="text-5xl font-bold mb-6">Caring for Special Children</h1>
+                    <p class="text-xl mb-8 max-w-3xl mx-auto">Supporting special education, vocational training, and sustainable agriculture for a better tomorrow</p>
+                    <div class="flex justify-center space-x-4">
+                        <button onclick="showDonateModal()" class="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
+                            Start Donating
+                        </button>
+                        <button onclick="showSection('about')" class="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors">
+                            Learn More
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impact Statistics -->
+            <div class="py-16 bg-white">
+                <div class="max-w-7xl mx-auto px-4">
+                    <h2 class="text-3xl font-bold text-center mb-12">Our Impact</h2>
+                    <div class="grid md:grid-cols-5 gap-4">
+			<div class="text-center">
+                            <div class="impact-counter" id="volunteersCount">500+</div>
+                            <p class="text-gray-600 font-semibold">Volunteers</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="impact-counter" id="studentsCount">97</div>
+                            <p class="text-gray-600 font-semibold">Students Helped</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="impact-counter" id="donationsReceived">₹5,50,000</div>
+                            <p class="text-gray-600 font-semibold">Total Donations</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="impact-counter" id="projectsCompleted">45</div>
+                            <p class="text-gray-600 font-semibold">Projects Completed</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="impact-counter" id="activeDonors">180</div>
+                            <p class="text-gray-600 font-semibold">Active Donors</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+           <!-- Services Overview -->
+            <div class="py-16 bg-gray-50">
+                <div class="max-w-7xl mx-auto px-4">
+                    <h2 class="text-3xl font-bold text-center mb-12">Our Services</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                            <i class="fas fa-graduation-cap text-4xl text-blue-600 mb-4"></i>
+                            <h3></h3>
+                            <h3 class="text-xl font-semibold mb-3">Special Education</h3>
+                            <p class="text-gray-600">Individualized education programs for children with physical and mental disabilities</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                            <i class="fas fa-home text-4xl text-green-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-3">Residential Care</h3>
+                            <p class="text-gray-600">Safe and nurturing hostel facilities with 24/7 care and supervision</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md card-hover">
+                            <i class="fas fa-heartbeat text-4xl text-red-600 mb-4"></i>
+                            <h3 class="text-xl font-semibold mb-3">Therapy Services</h3>
+                            <p class="text-gray-600">Physiotherapy, occupational therapy, and speech therapy programs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Corporate Partners -->
+            <div class="py-16 bg-white">
+                <div class="max-w-7xl mx-auto px-4">
+                    <h2 class="text-3xl font-bold text-center mb-12">Our Corporate Partners</h2>
+                    <div class="grid md:grid-cols-4 gap-6">
+                        <div class="bg-gray-50 p-6 rounded-lg text-center card-hover">
+                            <i class="fas fa-hospital text-3xl text-blue-600 mb-3"></i>
+                            <h4 class="font-semibold">MediCare Hospital</h4>
+                            <p class="text-sm text-gray-600">Medical & Therapy Support</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg text-center card-hover">
+                            <i class="fas fa-building text-3xl text-green-600 mb-3"></i>
+                            <h4 class="font-semibold">Rotary Club Mumbai</h4>
+                            <p class="text-sm text-gray-600">Infrastructure Development</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg text-center card-hover">
+                            <i class="fas fa-heart text-3xl text-red-600 mb-3"></i>
+                            <h4 class="font-semibold">Care Foundation</h4>
+                            <p class="text-sm text-gray-600">Special Equipment Funding</p>
+                        </div>
+                        <div class="bg-gray-50 p-6 rounded-lg text-center card-hover">
+                            <i class="fas fa-graduation-cap text-3xl text-purple-600 mb-3"></i>
+                            <h4 class="font-semibold">Special Needs Trust</h4>
+                            <p class="text-sm text-gray-600">Educational Resources</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       <!-- About Section -->
+        <section id="about" class="section-content hidden">
+            <div class="max-w-7xl mx-auto px-4 py-16">
+                <h1 class="text-4xl font-bold text-center mb-12">About Swarna Swayam Krushi Society</h1>
+                <h3 class="text-4xl text-center mb-12">Supported by Ministry of Social Justice & Empowerment, Government of India (Disabled Affairs)
+</h3>
+                
+                <div class="grid md:grid-cols-2 gap-12 mb-16">
+                    <div>
+                        <h2 class="text-2xl font-semibold mb-6">Our Vision</h2>
+                        <p class="text-gray-700 mb-6">To create a nurturing environment where every child with physical and mental disabilities receives comprehensive care, education, and therapy to reach their fullest potential and live with dignity.</p>
+                        
+                        <h2 class="text-2xl font-semibold mb-6">Our Mission</h2>
+                        <p class="text-gray-700">Providing specialized residential care, individualized education programs, and therapeutic services for physically and mentally challenged children while supporting their families and promoting inclusion in society.</p>
+                    </div>
+                    <div class="bg-blue-50 p-8 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-4">Key Achievements</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-600 mr-3"></i>Established residential school serving 150+ special children</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-600 mr-3"></i>Provided therapy services to 300+ children</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-600 mr-3"></i>Supported 200+ families with disabled children</li>
+                            <li class="flex items-center"><i class="fas fa-check-circle text-green-600 mr-3"></i>Trained 50+ special education teachers</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h2 class="text-2xl font-semibold mb-6 text-center">Our Programs</h2>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <i class="fas fa-child text-4xl text-blue-600 mb-4"></i>
+                            <h3 class="text-lg font-semibold mb-2">Special Education Center</h3>
+                            <p class="text-gray-600">Individualized education programs tailored for children with physical and mental disabilities</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-bed text-4xl text-green-600 mb-4"></i>
+                            <h3 class="text-lg font-semibold mb-2">Residential Hostel</h3>
+                            <p class="text-gray-600">Safe, comfortable boarding facilities with round-the-clock care and supervision</p>
+                        </div>
+                        <div class="text-center">
+                            <i class="fas fa-user-md text-4xl text-red-600 mb-4"></i>
+                            <h3 class="text-lg font-semibold mb-2">Medical & Therapy</h3>
+                            <p class="text-gray-600">Physiotherapy, occupational therapy, speech therapy, and medical care services</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+       <!-- Gallery Section -->
+        <section id="gallery" class="section-content hidden">
+            <div class="max-w-7xl mx-auto px-4 py-16">
+                <h1 class="text-4xl font-bold text-center mb-12">Photo & Video Gallery</h1>
+                
+                <!-- Photo Gallery -->
+                <div class="mb-12">
+                    <h2 class="text-2xl font-semibold mb-6">Gallery</h2>
+                    <div class="grid md:grid-cols-3 gap-6" id="galleryGrid">
+                        <!-- Gallery items will be loaded dynamically -->
+                         <img src="https://www.swarnasociety.org/images/banner-pic5.jpg" alt="Gallery Image" class="w-full h-60 object-cover rounded-lg shadow-md">
+                         <img src="https://www.swarnasociety.org/gallery/1.jpg?rand=491493248" alt="Gallery Image" class="w-full h-60 object-cover rounded-lg shadow-md">
+                        <img src="https://www.swarnasociety.org/gallery/5.jpg?rand=338973041" alt="Gallery Image" class="w-full h-60 object-cover rounded-lg shadow-md">
+                        <img src="https://www.swarnasociety.org/gallery/6.jpg?rand=137207142" alt="Gallery Image" class="w-full h-60 object-cover rounded-lg shadow-md">
+                        <img src="https://www.swarnasociety.org/gallery/15.jpg?rand=316515322" alt="Gallery Image" class="w-full h-60 object-cover rounded-lg shadow-md">
+                        <img src="https://www.swarnasociety.org/images/banner-pic6.jpg" alt="Gallery Image" class="w-full h-60 object-cover rounded-lg shadow-md">
+                    </div>
+                </div>
+
+                <!-- Video Gallery -->
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h2 class="text-2xl font-semibold mb-6 text-center">Featured Videos</h2>
+                    <div class="grid md:grid-cols-2 gap-6" id="videoGrid">
+                        <!-- Videos will be loaded dynamically -->
+                         <video width="100%" height="315" controls>
+                            <source src="C:\mycoding\project\csp\static\videos\swarna swayam krushi society.mp4" type="video/mp4">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donors Section -->
+        <section id="donors" class="section-content hidden">
+            <div class="max-w-7xl mx-auto px-4 py-16">
+                <h1 class="text-4xl font-bold text-center mb-12">Our Generous Donors</h1>
+                
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                    <h2 class="text-2xl font-semibold mb-6">Public Donors</h2>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h3 class="font-semibold text-lg">Rajesh Kumar</h3>
+                            <p class="text-gray-600">₹25,000 - Educational Materials</p>
+                            <p class="text-sm text-gray-500">March 2024</p>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg">
+                            <h3 class="font-semibold text-lg">Priya Sharma</h3>
+                            <p class="text-gray-600">₹15,000 - Vocational Equipment</p>
+                            <p class="text-sm text-gray-500">February 2024</p>
+                        </div>
+                        <div class="bg-yellow-50 p-4 rounded-lg">
+                            <h3 class="font-semibold text-lg">Mumbai Charitable Trust</h3>
+                            <p class="text-gray-600">₹50,000 - Infrastructure</p>
+                            <p class="text-sm text-gray-500">January 2024</p>
+                        </div>
+                        <div class="bg-purple-50 p-4 rounded-lg">
+                            <h3 class="font-semibold text-lg">Amit Patel</h3>
+                            <p class="text-gray-600">₹10,000 - General Fund</p>
+                            <p class="text-sm text-gray-500">March 2024</p>
+                        </div>
+                        <div class="bg-red-50 p-4 rounded-lg">
+                            <h3 class="font-semibold text-lg">Sunita Devi</h3>
+                            <p class="text-gray-600">₹8,000 - Student Scholarships</p>
+                            <p class="text-sm text-gray-500">February 2024</p>
+                        </div>
+                        <div class="bg-indigo-50 p-4 rounded-lg">
+                            <h3 class="font-semibold text-lg">Tech Solutions Pvt Ltd</h3>
+                            <p class="text-gray-600">₹75,000 - Computer Lab</p>
+                            <p class="text-sm text-gray-500">January 2024</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 rounded-lg p-8 text-center">
+                    <h3 class="text-xl font-semibold mb-4">Anonymous Donors</h3>
+                    <p class="text-gray-600 mb-4">We also have <span class="font-semibold text-blue-600">45 anonymous donors</span> who have contributed significantly to our cause.</p>
+                    <p class="text-sm text-gray-500">Their privacy is respected while their generosity is deeply appreciated.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section id="events" class="section-content hidden">
+            <div class="max-w-7xl mx-auto px-4 py-16">
+                <h1 class="text-4xl font-bold text-center mb-12">Events & Calendar</h1>
+                
+                <!-- Upcoming Events -->
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                    <h2 class="text-2xl font-semibold mb-6">Upcoming Events</h2>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-blue-500 pl-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-lg font-semibold">Annual Fundraising Gala</h3>
+                                    <p class="text-gray-600">Join us for an evening of celebration and fundraising</p>
+                                    <p class="text-sm text-gray-500"><i class="fas fa-calendar mr-2"></i>April 15, 2024 | 6:00 PM</p>
+                                    <p class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-2"></i>Community Hall, Mumbai</p>
+                                </div>
+                                <button onclick="registerForEvent('Annual Fundraising Gala')" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">Register</button>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-green-500 pl-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-lg font-semibold">Vocational Skills Workshop</h3>
+                                    <p class="text-gray-600">Free workshop on computer skills and digital literacy</p>
+                                    <p class="text-sm text-gray-500"><i class="fas fa-calendar mr-2"></i>April 22, 2024 | 10:00 AM</p>
+                                    <p class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-2"></i>Training Center</p>
+                                </div>
+                                <button onclick="registerForEvent('Vocational Skills Workshop')" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">Register</button>
+                            </div>
+                        </div>
+                        
+                        <div class="border-l-4 border-yellow-500 pl-6">
+                            <div class="flex justify-between items-start">
+                                <div>
+                                    <h3 class="text-lg font-semibold">Health Camp</h3>
+                                    <p class="text-gray-600">Free health checkups and awareness program</p>
+                                    <p class="text-sm text-gray-500"><i class="fas fa-calendar mr-2"></i>May 5, 2024 | 9:00 AM</p>
+                                    <p class="text-sm text-gray-500"><i class="fas fa-map-marker-alt mr-2"></i>Village Center</p>
+                                </div>
+                                <button onclick="registerForEvent('Health Camp')" class="bg-yellow-600 text-white px-4 py-2 rounded-lg hover:bg-yellow-700">Register</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Volunteer Registration -->
+                <div class="bg-gradient-to-r from-blue-50 to-green-50 rounded-lg p-8">
+                    <h2 class="text-2xl font-semibold mb-6 text-center">Become a Volunteer</h2>
+                    <div class="max-w-2xl mx-auto">
+                        <form onsubmit="submitVolunteerForm(event)" class="space-y-4">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="text" placeholder="Full Name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <input type="email" placeholder="Email Address" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="tel" placeholder="Phone Number" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <select required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                    <option value="">Select Interest Area</option>
+                                    <option value="education">Special Education</option>
+                                    <option value="vocational">Vocational Training</option>
+                                    <option value="agriculture">Agriculture Support</option>
+                                    <option value="events">Event Management</option>
+                                    <option value="fundraising">Fundraising</option>
+                                </select>
+                            </div>
+                            <textarea placeholder="Tell us about your skills and availability" rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                                Register as Volunteer
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section-content hidden">
+            <div class="max-w-7xl mx-auto px-4 py-16">
+                <h1 class="text-4xl font-bold text-center mb-12">Contact Us</h1>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-2xl font-semibold mb-6">Get in Touch</h2>
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-blue-600 text-xl mr-4"></i>
+                                <div>
+                                    <p class="font-semibold">Address</p>
+                                    <p class="text-gray-600">123 Rural Development Road, Village Swarna, District Pune, Maharashtra 411001</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-green-600 text-xl mr-4"></i>
+                                <div>
+                                    <p class="font-semibold">Phone</p>
+                                    <p class="text-gray-600">+91 98765 43210</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-envelope text-red-600 text-xl mr-4"></i>
+                                <div>
+                                    <p class="font-semibold">Email</p>
+                                    <p class="text-gray-600">info@swarnaswayamkrushi.org</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-clock text-purple-600 text-xl mr-4"></i>
+                                <div>
+                                    <p class="font-semibold">Office Hours</p>
+                                    <p class="text-gray-600">Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Social Media -->
+                        <div>
+                            <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition-colors">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-blue-400 text-white p-3 rounded-full hover:bg-blue-500 transition-colors">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition-colors">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-blue-800 text-white p-3 rounded-full hover:bg-blue-900 transition-colors">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <h2 class="text-2xl font-semibold mb-6">Send us a Message</h2>
+                        <form onsubmit="submitContactForm(event)" class="space-y-4">
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <input type="text" placeholder="Your Name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <input type="email" placeholder="Your Email" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            </div>
+                            <input type="text" placeholder="Subject" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                            <textarea placeholder="Your Message" rows="5" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donor Dashboard -->
+        <section id="donorDashboard" class="section-content hidden">
+            <div class="max-w-7xl mx-auto px-4 py-16">
+                <div class="flex justify-between items-center mb-8">
+                    <h1 class="text-4xl font-bold">Donor Dashboard</h1>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-gray-600">Welcome, <span id="donorName" class="font-semibold">John Doe</span></span>
+                        <button onclick="logout()" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Logout</button>
+                    </div>
+                </div>
+
+                <!-- Dashboard Stats -->
+                <div class="grid md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-600">Total Donated</h3>
+                        <p class="text-2xl font-bold text-blue-600">₹45,000</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-600">Donations Made</h3>
+                        <p class="text-2xl font-bold text-green-600">12</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-600">Impact Score</h3>
+                        <p class="text-2xl font-bold text-purple-600">850</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-600">Messages</h3>
+                        <p class="text-2xl font-bold text-yellow-600">3 <span class="notification-badge">●</span></p>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="bg-white rounded-lg shadow-lg p-8 mb-8">
+                    <h2 class="text-2xl font-semibold mb-6">Quick Actions</h2>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <button onclick="showDonateModal()" class="bg-green-600 text-white p-6 rounded-lg hover:bg-green-700 transition-colors text-center">
+                            <i class="fas fa-heart text-3xl mb-3"></i>
+                            <h3 class="text-lg font-semibold">Make Donation</h3>
+                        </button>
+                        <button onclick="showDonationHistory()" class="bg-blue-600 text-white p-6 rounded-lg hover:bg-blue-700 transition-colors text-center">
+                            <i class="fas fa-history text-3xl mb-3"></i>
+                            <h3 class="text-lg font-semibold">View History</h3>
+                        </button>
+                        <button onclick="showMessenger()" class="bg-purple-600 text-white p-6 rounded-lg hover:bg-purple-700 transition-colors text-center">
+                            <i class="fas fa-comments text-3xl mb-3"></i>
+                            <h3 class="text-lg font-semibold">Messages</h3>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h2 class="text-2xl font-semibold mb-6">Recent Activity</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fas fa-check-circle text-green-600 text-xl mr-4"></i>
+                                <div>
+                                    <p class="font-semibold">Donation Successful</p>
+                                    <p class="text-sm text-gray-600">₹5,000 for Educational Materials - March 15, 2024</p>
+                                </div>
+                            </div>
+                            <button class="text-blue-600 hover:text-blue-800">View Receipt</button>
+                        </div>
+                        <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+                            <div class="flex items-center">
+                                <i class="fas fa-message text-blue-600 text-xl mr-4"></i>
+                                <div>
+                                    <p class="font-semibold">New Message from Admin</p>
+                                    <p class="text-sm text-gray-600">Thank you for your generous contribution - March 16, 2024</p>
+                                </div>
+                            </div>
+                            <button onclick="showMessenger()" class="text-blue-600 hover:text-blue-800">Read</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admin Dashboard -->
+        <section id="adminDashboard" class="section-content hidden">
+            <div class="max-w-7xl mx-auto px-4 py-16">
+                <div class="flex justify-between items-center mb-8">
+                    <h1 class="text-4xl font-bold">Admin Dashboard</h1>
+                    <div class="flex items-center space-x-4">
+                        <span class="text-gray-600">Welcome, <span class="font-semibold">Admin</span></span>
+                        <button onclick="logout()" class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">Logout</button>
+                    </div>
+                </div>
+
+                <!-- Admin Stats -->
+                <div class="grid md:grid-cols-5 gap-6 mb-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-600">Total Donations</h3>
+                        <p class="text-2xl font-bold text-green-600">₹5,50,000</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-600">Active Donors</h3>
+                        <p class="text-2xl font-bold text-blue-600">180</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-600">Pending Requests</h3>
+                        <p class="text-2xl font-bold text-yellow-600">8</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-600">New Messages</h3>
+                        <p class="text-2xl font-bold text-purple-600">15</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-lg font-semibold text-gray-600">Projects Active</h3>
+                        <p class="text-2xl font-bold text-red-600">12</p>
+                    </div>
+                </div>
+
+                <!-- Admin Actions -->
+                <div class="grid md:grid-cols-3 gap-8 mb-8">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-semibold mb-4">Content Management</h3>
+                        <div class="space-y-3">
+                            <button onclick="manageContent('about')" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">Edit About Page</button>
+                            <button onclick="manageContent('gallery')" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">Manage Gallery</button>
+                            <button onclick="manageContent('events')" class="w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700">Manage Events</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-semibold mb-4">Donation Management</h3>
+                        <div class="space-y-3">
+                            <button onclick="viewAllDonations()" class="w-full bg-indigo-600 text-white py-2 rounded-lg hover:bg-indigo-700">View All Donations</button>
+                            <button onclick="manageRequirements()" class="w-full bg-yellow-600 text-white py-2 rounded-lg hover:bg-yellow-700">Manage Requirements</button>
+                            <button onclick="sendReceipts()" class="w-full bg-pink-600 text-white py-2 rounded-lg hover:bg-pink-700">Send Receipts</button>
+                        </div>
+                    </div>
+
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-xl font-semibold mb-4">Communication</h3>
+                        <div class="space-y-3">
+                            <button onclick="showAdminMessenger()" class="w-full bg-teal-600 text-white py-2 rounded-lg hover:bg-teal-700">Donor Messages</button>
+                            <button onclick="sendBulkNotification()" class="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700">Send Notifications</button>
+                            <button onclick="manageVolunteers()" class="w-full bg-gray-600 text-white py-2 rounded-lg hover:bg-gray-700">Manage Volunteers</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Donations -->
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h2 class="text-2xl font-semibold mb-6">Recent Donations</h2>
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead>
+                                <tr class="border-b">
+                                    <th class="text-left py-3">Donor</th>
+                                    <th class="text-left py-3">Amount</th>
+                                    <th class="text-left py-3">Type</th>
+                                    <th class="text-left py-3">Date</th>
+                                    <th class="text-left py-3">Status</th>
+                                    <th class="text-left py-3">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b">
+                                    <td class="py-3">Rajesh Kumar</td>
+                                    <td class="py-3">₹25,000</td>
+                                    <td class="py-3">Educational Materials</td>
+                                    <td class="py-3">Mar 15, 2024</td>
+                                    <td class="py-3"><span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm">Completed</span></td>
+                                    <td class="py-3">
+                                        <button class="text-blue-600 hover:text-blue-800 mr-2">View</button>
+                                        <button class="text-green-600 hover:text-green-800">Receipt</button>
+                                    </td>
+                                </tr>
+                                <tr class="border-b">
+                                    <td class="py-3">Anonymous Donor</td>
+                                    <td class="py-3">₹15,000</td>
+                                    <td class="py-3">General Fund</td>
+                                    <td class="py-3">Mar 14, 2024</td>
+                                    <td class="py-3"><span class="bg-green-100 text-green-800 px-2 py-1 rounded-full text-sm">Completed</span></td>
+                                    <td class="py-3">
+                                        <button class="text-blue-600 hover:text-blue-800 mr-2">View</button>
+                                        <button class="text-green-600 hover:text-green-800">Receipt</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Modals -->
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Login</h2>
+                <button onclick="closeModal('loginModal')" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="mb-6">
+                <div class="flex space-x-2">
+                    <button onclick="switchLoginTab('donor')" id="donorTab" class="flex-1 py-2 px-4 bg-blue-600 text-white rounded-lg">Donor</button>
+                    <button onclick="switchLoginTab('admin')" id="adminTab" class="flex-1 py-2 px-4 bg-gray-200 text-gray-700 rounded-lg">Admin</button>
+                </div>
+            </div>
+
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <input type="email" id="loginEmail" placeholder="Email Address" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <input type="password" id="loginPassword" placeholder="Password" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-colors font-semibold">
+                    Login
+                </button>
+            </form>
+
+            <div class="mt-6 text-center">
+                <p class="text-gray-600">Don't have an account? 
+                    <button onclick="showRegisterModal()" class="text-blue-600 hover:text-blue-800 font-semibold">Register here</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Register as Donor</h2>
+                <button onclick="closeModal('registerModal')" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <form onsubmit="handleRegister(event)" class="space-y-4">
+                <input type="text" placeholder="Full Name" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <input type="email" placeholder="Email Address" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <input type="tel" placeholder="Phone Number" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <input type="password" placeholder="Password" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <input type="password" placeholder="Confirm Password" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                
+                <div class="flex items-center">
+                    <input type="checkbox" id="agreeTerms" required class="mr-2">
+                    <label for="agreeTerms" class="text-sm text-gray-600">I agree to the Terms and Conditions</label>
+                </div>
+
+                <button type="submit" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">
+                    Register
+                </button>
+            </form>
+
+            <div class="mt-6 text-center">
+                <p class="text-gray-600">Already have an account? 
+                    <button onclick="showLoginModal()" class="text-blue-600 hover:text-blue-800 font-semibold">Login here</button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Donate Modal -->
+    <div id="donateModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">Make a Donation</h2>
+                <button onclick="closeModal('donateModal')" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Donation Type Selection -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-4">Choose Donation Type</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <button onclick="selectDonationType('requirement')" id="requirementBtn" class="p-4 border-2 border-blue-600 bg-blue-50 text-blue-800 rounded-lg">
+                        <i class="fas fa-list-ul text-2xl mb-2"></i>
+                        <h4 class="font-semibold">Requirement-Based</h4>
+                        <p class="text-sm">Choose from specific needs</p>
+                    </button>
+                    <button onclick="selectDonationType('amount')" id="amountBtn" class="p-4 border-2 border-gray-300 hover:border-green-600 hover:bg-green-50 hover:text-green-800 rounded-lg">
+                        <i class="fas fa-rupee-sign text-2xl mb-2"></i>
+                        <h4 class="font-semibold">Direct Amount</h4>
+                        <p class="text-sm">Enter custom amount</p>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Requirement-Based Donation -->
+            <div id="requirementDonation" class="donation-type">
+                <h3 class="text-lg font-semibold mb-4">Current Requirements</h3>
+                <div class="space-y-4 mb-6">
+                    <div class="border rounded-lg p-4">
+                        <div class="flex justify-between items-start">
+                            <div class="flex-1">
+                                <h4 class="font-semibold">Educational Books & Materials</h4>
+                                <p class="text-gray-600 text-sm">Books, notebooks, and learning materials for special education students</p>
+                                <p class="text-blue-600 font-semibold">₹500 per set | Need: 50 sets</p>
+                            </div>
+                            <div class="ml-4">
+                                <input type="number" min="1" max="50" placeholder="Qty" class="w-16 p-2 border rounded">
+                                <button onclick="addToCart('books', 500)" class="ml-2 bg-blue-600 text-white px-3 py-2 rounded hover:bg-blue-700">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="border rounded-lg p-4">
+                        <div class="flex justify-between items-start">
+                            <div class="flex-1">
+                                <h4 class="font-semibold">Vocational Training Equipment</h4>
+                                <p class="text-gray-600 text-sm">Sewing machines, tools, and equipment for skill development</p>
+                                <p class="text-green-600 font-semibold">₹2,000 per unit | Need: 10 units</p>
+                            </div>
+                            <div class="ml-4">
+                                <input type="number" min="1" max="10" placeholder="Qty" class="w-16 p-2 border rounded">
+                                <button onclick="addToCart('equipment', 2000)" class="ml-2 bg-green-600 text-white px-3 py-2 rounded hover:bg-green-700">Add</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="border rounded-lg p-4">
+                        <div class="flex justify-between items-start">
+                            <div class="flex-1">
+                                <h4 class="font-semibold">Student Scholarships</h4>
+                                <p class="text-gray-600 text-sm">Monthly scholarship support for underprivileged students</p>
+                                <p class="text-purple-600 font-semibold">₹1,000 per month | Need: 25 scholarships</p>
+                            </div>
+                            <div class="ml-4">
+                                <input type="number" min="1" max="25" placeholder="Qty" class="w-16 p-2 border rounded">
+                                <button onclick="addToCart('scholarship', 1000)" class="ml-2 bg-purple-600 text-white px-3 py-2 rounded hover:bg-purple-700">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart -->
+                <div id="donationCart" class="bg-gray-50 p-4 rounded-lg mb-6 hidden">
+                    <h4 class="font-semibold mb-3">Your Donation Cart</h4>
+                    <div id="cartItems" class="space-y-2 mb-3"></div>
+                    <div class="border-t pt-3">
+                        <p class="font-semibold">Total: ₹<span id="cartTotal">0</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Direct Amount Donation -->
+            <div id="amountDonation" class="donation-type hidden">
+                <h3 class="text-lg font-semibold mb-4">Enter Donation Amount</h3>
+                <div class="mb-6">
+                    <div class="grid grid-cols-3 gap-3 mb-4">
+                        <button onclick="setAmount(1000)" class="p-3 border border-gray-300 rounded-lg hover:bg-blue-50 hover:border-blue-500">₹1,000</button>
+                        <button onclick="setAmount(2500)" class="p-3 border border-gray-300 rounded-lg hover:bg-blue-50 hover:border-blue-500">₹2,500</button>
+                        <button onclick="setAmount(5000)" class="p-3 border border-gray-300 rounded-lg hover:bg-blue-50 hover:border-blue-500">₹5,000</button>
+                    </div>
+                    <input type="number" id="customAmount" placeholder="Enter custom amount" min="100" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                </div>
+            </div>
+
+            <!-- Donor Visibility -->
+            <div class="mb-6">
+                <h3 class="text-lg font-semibold mb-4">Donation Visibility</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                        <input type="radio" name="visibility" value="public" checked class="mr-3">
+                        <div>
+                            <h4 class="font-semibold">🔓 Public Donor</h4>
+                            <p class="text-sm text-gray-600">Your name will be displayed on our website</p>
+                        </div>
+                    </label>
+                    <label class="flex items-center p-3 border rounded-lg cursor-pointer hover:bg-gray-50">
+                        <input type="radio" name="visibility" value="hidden" class="mr-3">
+                        <div>
+                            <h4 class="font-semibold">🔒 Anonymous Donor</h4>
+                            <p class="text-sm text-gray-600">Your name will remain private</p>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Proceed Button -->
+            <button onclick="proceedToDonation()" class="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors font-semibold">
+                Proceed to Payment
+            </button>
+        </div>
+    </div>
+
+    <!-- Messenger Modal -->
+    <div id="messengerModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg w-full max-w-2xl mx-4 h-[80vh] flex flex-col">
+            <div class="flex justify-between items-center p-6 border-b">
+                <h2 class="text-xl font-bold">Messages</h2>
+                <button onclick="closeModal('messengerModal')" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            
+            <div class="flex-1 p-6 overflow-y-auto" id="chatMessages">
+                <div class="space-y-4">
+                    <div class="flex justify-start">
+                        <div class="chat-bubble bg-gray-100 p-3 rounded-lg">
+                            <p class="text-sm font-semibold text-gray-600 mb-1">Admin</p>
+                            <p>Thank you for your generous donation of ₹25,000 for educational materials. Your support means a lot to our students!</p>
+                            <p class="text-xs text-gray-500 mt-1">March 16, 2024 - 10:30 AM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-end">
+                        <div class="chat-bubble bg-blue-600 text-white p-3 rounded-lg">
+                            <p>I'm happy to help! Could you please send me updates on how the materials are being used?</p>
+                            <p class="text-xs text-blue-200 mt-1">March 16, 2024 - 2:15 PM</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-start">
+                        <div class="chat-bubble bg-gray-100 p-3 rounded-lg">
+                            <p class="text-sm font-semibold text-gray-600 mb-1">Admin</p>
+                            <p>Absolutely! We'll send you photos and progress reports. The books have already reached 25 students and they're very excited!</p>
+                            <p class="text-xs text-gray-500 mt-1">March 17, 2024 - 9:00 AM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-6 border-t">
+                <form onsubmit="sendMessage(event)" class="flex space-x-3">
+                    <input type="text" id="messageInput" placeholder="Type your message..." required class="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                    <button type="submit" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4 text-center">
+            <i class="fas fa-check-circle text-6xl text-green-600 mb-4"></i>
+            <h2 class="text-2xl font-bold mb-4">Thank You!</h2>
+            <p id="successMessage" class="text-gray-600 mb-6">Your donation has been processed successfully.</p>
+            
+            <div class="space-y-3 mb-6">
+                <button onclick="downloadReceipt()" class="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700">
+                    <i class="fas fa-download mr-2"></i>Download Receipt
+                </button>
+                <button onclick="shareOnSocial()" class="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700">
+                    <i class="fas fa-share mr-2"></i>Share on Social Media
+                </button>
+            </div>
+            
+            <button onclick="closeModal('successModal')" class="bg-gray-600 text-white px-6 py-2 rounded-lg hover:bg-gray-700">
+                Close
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let currentUser = null;
+        let currentUserType = 'donor';
+        let donationCart = [];
+        let currentDonationType = 'requirement';
+
+        // Navigation
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section-content').forEach(section => {
+                section.classList.add('hidden');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.remove('hidden');
+            
+            // Update navigation
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-blue-600', 'font-semibold');
+                btn.classList.add('text-gray-700');
+            });
+        }
+
+        // Modal functions
+        function showLoginModal() {
+            closeModal('registerModal');
+            document.getElementById('loginModal').classList.remove('hidden');
+            document.getElementById('loginModal').classList.add('flex');
+        }
+
+        function showRegisterModal() {
+            closeModal('loginModal');
+            document.getElementById('registerModal').classList.remove('hidden');
+            document.getElementById('registerModal').classList.add('flex');
+        }
+
+        function showDonateModal() {
+            document.getElementById('donateModal').classList.remove('hidden');
+            document.getElementById('donateModal').classList.add('flex');
+        }
+
+        function showMessenger() {
+            document.getElementById('messengerModal').classList.remove('hidden');
+            document.getElementById('messengerModal').classList.add('flex');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+            document.getElementById(modalId).classList.remove('flex');
+        }
+
+        // Login functions
+        function switchLoginTab(type) {
+            currentUserType = type;
+            const donorTab = document.getElementById('donorTab');
+            const adminTab = document.getElementById('adminTab');
+            
+            if (type === 'donor') {
+                donorTab.classList.add('bg-blue-600', 'text-white');
+                donorTab.classList.remove('bg-gray-200', 'text-gray-700');
+                adminTab.classList.add('bg-gray-200', 'text-gray-700');
+                adminTab.classList.remove('bg-blue-600', 'text-white');
+            } else {
+                adminTab.classList.add('bg-blue-600', 'text-white');
+                adminTab.classList.remove('bg-gray-200', 'text-gray-700');
+                donorTab.classList.add('bg-gray-200', 'text-gray-700');
+                donorTab.classList.remove('bg-blue-600', 'text-white');
+            }
+        }
+
+        function handleLogin(event) {
+            event.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            // Simulate login
+            currentUser = { email: email, name: 'John Doe' };
+            
+            closeModal('loginModal');
+            
+            if (currentUserType === 'donor') {
+                showDonorDashboard();
+            } else {
+                showAdminDashboard();
+            }
+            
+            // Show success message
+            alert('Login successful!');
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            closeModal('registerModal');
+            alert('Registration successful! Please login to continue.');
+            showLoginModal();
+        }
+
+        function logout() {
+            currentUser = null;
+            showSection('home');
+            alert('Logged out successfully!');
+        }
+
+        // Dashboard functions
+        function showDonorDashboard() {
+            document.querySelectorAll('.section-content').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById('donorDashboard').classList.remove('hidden');
+        }
+
+        function showAdminDashboard() {
+            document.querySelectorAll('.section-content').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById('adminDashboard').classList.remove('hidden');
+        }
+
+        // Donation functions
+        function selectDonationType(type) {
+            currentDonationType = type;
+            const requirementBtn = document.getElementById('requirementBtn');
+            const amountBtn = document.getElementById('amountBtn');
+            const requirementDiv = document.getElementById('requirementDonation');
+            const amountDiv = document.getElementById('amountDonation');
+            
+            if (type === 'requirement') {
+                requirementBtn.classList.add('border-blue-600', 'bg-blue-50', 'text-blue-800');
+                requirementBtn.classList.remove('border-gray-300');
+                amountBtn.classList.add('border-gray-300');
+                amountBtn.classList.remove('border-green-600', 'bg-green-50', 'text-green-800');
+                
+                requirementDiv.classList.remove('hidden');
+                amountDiv.classList.add('hidden');
+            } else {
+                amountBtn.classList.add('border-green-600', 'bg-green-50', 'text-green-800');
+                amountBtn.classList.remove('border-gray-300');
+                requirementBtn.classList.add('border-gray-300');
+                requirementBtn.classList.remove('border-blue-600', 'bg-blue-50', 'text-blue-800');
+                
+                amountDiv.classList.remove('hidden');
+                requirementDiv.classList.add('hidden');
+            }
+        }
+
+        function addToCart(item, price) {
+            const qtyInput = event.target.previousElementSibling;
+            const quantity = parseInt(qtyInput.value) || 1;
+            
+            const cartItem = {
+                item: item,
+                price: price,
+                quantity: quantity,
+                total: price * quantity
+            };
+            
+            donationCart.push(cartItem);
+            updateCartDisplay();
+            qtyInput.value = '';
+        }
+
+        function updateCartDisplay() {
+            const cartDiv = document.getElementById('donationCart');
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            
+            if (donationCart.length === 0) {
+                cartDiv.classList.add('hidden');
+                return;
+            }
+            
+            cartDiv.classList.remove('hidden');
+            cartItems.innerHTML = '';
+            let total = 0;
+            
+            donationCart.forEach((item, index) => {
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'flex justify-between items-center';
+                itemDiv.innerHTML = `
+                    <span>${item.item} x ${item.quantity}</span>
+                    <span>₹${item.total} <button onclick="removeFromCart(${index})" class="text-red-600 ml-2">×</button></span>
+                `;
+                cartItems.appendChild(itemDiv);
+                total += item.total;
+            });
+            
+            cartTotal.textContent = total;
+        }
+
+        function removeFromCart(index) {
+            donationCart.splice(index, 1);
+            updateCartDisplay();
+        }
+
+        function setAmount(amount) {
+            document.getElementById('customAmount').value = amount;
+        }
+
+        function proceedToDonation() {
+            let amount = 0;
+            let description = '';
+            
+            if (currentDonationType === 'requirement') {
+                if (donationCart.length === 0) {
+                    alert('Please add items to your cart first.');
+                    return;
+                }
+                amount = donationCart.reduce((sum, item) => sum + item.total, 0);
+                description = donationCart.map(item => `${item.item} x ${item.quantity}`).join(', ');
+            } else {
+                amount = parseInt(document.getElementById('customAmount').value);
+                if (!amount || amount < 100) {
+                    alert('Please enter a valid amount (minimum ₹100).');
+                    return;
+                }
+                description = 'General donation';
+            }
+            
+            const visibility = document.querySelector('input[name="visibility"]:checked').value;
+            
+            // Simulate payment processing
+            setTimeout(() => {
+                closeModal('donateModal');
+                showSuccessModal(amount, description, visibility);
+                
+                // Reset cart
+                donationCart = [];
+                updateCartDisplay();
+            }, 2000);
+            
+            alert('Processing payment... Please wait.');
+        }
+
+        function showSuccessModal(amount, description, visibility) {
+            const modal = document.getElementById('successModal');
+            const message = document.getElementById('successMessage');
+            
+            message.textContent = `Your donation of ₹${amount} for ${description} has been processed successfully. Transaction ID: TXN${Date.now()}`;
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        // Messaging functions
+        function sendMessage(event) {
+            event.preventDefault();
+            const input = document.getElementById('messageInput');
+            const message = input.value.trim();
+            
+            if (!message) return;
+            
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'flex justify-end';
+            messageDiv.innerHTML = `
+                <div class="chat-bubble bg-blue-600 text-white p-3 rounded-lg">
+                    <p>${message}</p>
+                    <p class="text-xs text-blue-200 mt-1">${new Date().toLocaleString()}</p>
+                </div>
+            `;
+            
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            input.value = '';
+            
+            // Simulate admin reply
+            setTimeout(() => {
+                const replyDiv = document.createElement('div');
+                replyDiv.className = 'flex justify-start';
+                replyDiv.innerHTML = `
+                    <div class="chat-bubble bg-gray-100 p-3 rounded-lg">
+                        <p class="text-sm font-semibold text-gray-600 mb-1">Admin</p>
+                        <p>Thank you for your message. We'll get back to you soon!</p>
+                        <p class="text-xs text-gray-500 mt-1">${new Date().toLocaleString()}</p>
+                    </div>
+                `;
+                chatMessages.appendChild(replyDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 2000);
+        }
+
+        // Utility functions
+        function downloadReceipt() {
+            alert('Receipt downloaded successfully!');
+        }
+
+        function shareOnSocial() {
+            const shareText = "I just made a donation to Swarna Swayam Krushi Society! Join me in supporting their amazing work in education and rural development.";
+            const shareUrl = window.location.href;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Donation to Swarna Swayam Krushi Society',
+                    text: shareText,
+                    url: shareUrl
+                });
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                const platforms = [
+                    { name: 'Facebook', url: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}` },
+                    { name: 'Twitter', url: `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}` },
+                    { name: 'LinkedIn', url: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}` },
+                    { name: 'WhatsApp', url: `https://wa.me/?text=${encodeURIComponent(shareText + ' ' + shareUrl)}` }
+                ];
+                
+                const platform = prompt('Choose platform:\n1. Facebook\n2. Twitter\n3. LinkedIn\n4. WhatsApp\n\nEnter number (1-4):');
+                
+                if (platform && platform >= 1 && platform <= 4) {
+                    window.open(platforms[platform - 1].url, '_blank', 'noopener,noreferrer');
+                }
+            }
+        }
+
+        // Admin functions
+        function manageContent(type) {
+            alert(`Opening ${type} content management...`);
+        }
+
+        function viewAllDonations() {
+            alert('Opening donations management panel...');
+        }
+
+        function manageRequirements() {
+            alert('Opening requirements management...');
+        }
+
+        function sendReceipts() {
+            alert('Sending receipts to donors...');
+        }
+
+        function showAdminMessenger() {
+            alert('Opening admin messenger...');
+        }
+
+        function sendBulkNotification() {
+            alert('Opening bulk notification system...');
+        }
+
+        function manageVolunteers() {
+            alert('Opening volunteer management...');
+        }
+
+        // Event functions
+        function registerForEvent(eventName) {
+            alert(`Registration for "${eventName}" submitted successfully!`);
+        }
+
+        function submitVolunteerForm(event) {
+            event.preventDefault();
+            alert('Volunteer registration submitted successfully! We will contact you soon.');
+            event.target.reset();
+        }
+
+        function submitContactForm(event) {
+            event.preventDefault();
+            alert('Message sent successfully! We will get back to you within 24 hours.');
+            event.target.reset();
+        }
+
+        // Gallery functions
+        function openImageModal(title) {
+            alert(`Opening image: ${title}`);
+        }
+
+        function openVideoModal(title) {
+            alert(`Playing video: ${title}`);
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('home');
+            
+            // Animate impact counters
+            setTimeout(() => {
+                animateCounters();
+            }, 1000);
+        });
+
+        function animateCounters() {
+            const counters = document.querySelectorAll('.impact-counter');
+            counters.forEach(counter => {
+                const target = counter.textContent;
+                const numericValue = parseInt(target.replace(/[^\d]/g, ''));
+                let current = 0;
+                const increment = numericValue / 50;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= numericValue) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        if (target.includes('₹')) {
+                            counter.textContent = '₹' + Math.floor(current).toLocaleString();
+                        } else if (target.includes('+')) {
+                            counter.textContent = Math.floor(current) + '+';
+                        } else {
+                            counter.textContent = Math.floor(current);
+                        }
+                    }
+                }, 50);
+            });
+        }
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function(event) {
+            const modals = ['loginModal', 'registerModal', 'donateModal', 'messengerModal', 'successModal'];
+            modals.forEach(modalId => {
+                const modal = document.getElementById(modalId);
+                if (event.target === modal) {
+                    closeModal(modalId);
+                }
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98b63c2b72a47e90',t:'MTc1OTkzMjc2Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
